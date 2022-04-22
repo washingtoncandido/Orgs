@@ -14,7 +14,7 @@ class ProductsDAO {
         products.add(product)
     }
 
-    //função criada para atualizar a lista
+    //toList é usada para criar uma copia dos dados
     fun searchAll(): List<Products> {
         return products.toList()
     }
