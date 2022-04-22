@@ -9,13 +9,14 @@
 ## Funcionalidade
 
 + Lista de produtos
-
++ Cadastro de produto
++ Detalhes do produto
 
 
 ## Funcionalidade em Desenvolvimento
 
-+ Cadastro de produto
 + Detalhes do produto
++ Cadastro de imagem para o Produto
 
 
 ## Assuntos abordados:

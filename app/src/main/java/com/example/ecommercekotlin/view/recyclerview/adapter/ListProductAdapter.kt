@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommercekotlin.R
+import com.example.ecommercekotlin.databinding.ItemProductBinding
 import com.example.ecommercekotlin.modal.Products
-
 
 
 class ListProductAdapter(val context: Context, products: List<Products>) :
@@ -17,9 +17,8 @@ class ListProductAdapter(val context: Context, products: List<Products>) :
 
     //ele vai ser o responsaval para criar cada uma das vieows para fazer o processo de bind
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderItemProduct {
-        val inflate =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
-        return ViewHolderItemProduct(view = inflate)
+        val binding = ItemProductBinding.inflate(LayoutInflater.from(context),parent,false)
+        return ViewHolderItemProduct(binding)
     }
 
 

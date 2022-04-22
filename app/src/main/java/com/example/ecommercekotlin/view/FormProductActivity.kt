@@ -8,22 +8,28 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.ecommercekotlin.DAO.ProductsDAO
 import com.example.ecommercekotlin.R
+import com.example.ecommercekotlin.databinding.ActivityFormproductBinding
+import com.example.ecommercekotlin.databinding.ActivityListproductsBinding
 import com.example.ecommercekotlin.modal.Products
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.math.BigDecimal
 
 class FormProductActivity : AppCompatActivity() {
+
+    private val binding by lazy {
+        ActivityFormproductBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_formproduct)
+        setContentView(binding.root)
         setTitle("Cadstro de Produto")
 
-        val btn_salve = findViewById<Button>(R.id.btn_cadastrar)
+        val btn_salve = binding.btnCadastrar
         btn_salve.setOnClickListener {
-
-            val editName = findViewById<EditText>(R.id.edt_name)
-            val editDescripton = findViewById<EditText>(R.id.edt_descripton)
-            val editPrice = findViewById<EditText>(R.id.edt_price)
+            val editName = binding.edtName
+            val editDescripton = binding.edtDescripton
+            val editPrice = binding.edtPrice
 
             val nome = editName.text.toString()
             val descripton = editDescripton.text.toString()
@@ -59,7 +65,5 @@ class FormProductActivity : AppCompatActivity() {
     }
 
 
-    private fun getField() {
 
-    }
 }
