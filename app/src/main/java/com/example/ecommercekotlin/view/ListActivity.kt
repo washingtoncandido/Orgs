@@ -7,34 +7,42 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommercekotlin.DAO.ProductsDAO
 import com.example.ecommercekotlin.R
-import com.example.ecommercekotlin.modal.Products
 import com.example.ecommercekotlin.view.recyclerview.adapter.ListProductAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.math.BigDecimal
 
 class ListActivity : Activity() {
+
+    private val dao = ProductsDAO()
+    private val adapter = ListProductAdapter(context = this, products = dao.searchAll())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listproducts)
-
-        val dao = ProductsDAO()
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
-        recyclerView.adapter = ListProductAdapter(
-            context = this, products = dao.searchAll()
-        )
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        goFormProducts()
+        configRecyclerView()
     }
 
     override fun onResume() {
         super.onResume()
+        onClickFab()
+        adapter.attAllProduts(dao.searchAll())
+    }
+
+    private fun configRecyclerView(){
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
     }
 
     fun goFormProducts() {
+        val intent = Intent(this, FormProductActivity::class.java)
+        startActivity(intent)
+
+    }
+
+    private fun onClickFab() {
         val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton)
         fab.setOnClickListener {
-            val intent = Intent(this, FormProductActivity::class.java)
-            startActivity(intent)
+            goFormProducts()
         }
     }
 

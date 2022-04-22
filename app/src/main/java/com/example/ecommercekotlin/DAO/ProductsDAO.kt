@@ -6,7 +6,7 @@ import java.math.BigDecimal
 class ProductsDAO {
 
     companion object {
-        private val products: MutableList<Products> = mutableListOf()
+        private val products = mutableListOf<Products>()
     }
 
     //função criada para adicionar o produto na lista
