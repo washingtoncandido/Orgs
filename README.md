@@ -14,7 +14,7 @@
 
 ## Funcionalidade em Desenvolvimento
 
-+ + Lista cadastro de produto
++ Cadastro de produto
 + Detalhes do produto
 
 
