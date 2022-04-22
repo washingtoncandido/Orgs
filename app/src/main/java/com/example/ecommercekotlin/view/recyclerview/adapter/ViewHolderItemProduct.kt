@@ -17,7 +17,7 @@ class ViewHolderItemProduct(view: View) : RecyclerView.ViewHolder(view) {
 
         txtName.text = product.name
         txtDescription.text = product.description
-        txtPrice.text = product.price.toPlainString()
+        txtPrice.text = product.price?.toPlainString()
 
 
     }
