@@ -1,23 +1,24 @@
-package com.example.ecommercekotlin.view
+package com.example.ecommercekotlin.view.activity
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommercekotlin.DAO.ProductsDAO
-import com.example.ecommercekotlin.R
+import com.example.ecommercekotlin.DetailProductActivity
 import com.example.ecommercekotlin.databinding.ActivityListproductsBinding
+import com.example.ecommercekotlin.modal.Products
 import com.example.ecommercekotlin.view.recyclerview.adapter.ListProductAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class ListActivity : Activity() {
+class ListActivity : Activity(), ListProductAdapter.ClickProduct {
 
     private val dao = ProductsDAO()
 
 
     private val adapter by lazy {
-        ListProductAdapter(this, products = dao.searchAll())
+        ListProductAdapter(this, products = dao.searchAll(),this)
     }
     private val binding by lazy {
         ActivityListproductsBinding.inflate(layoutInflater)
@@ -28,6 +29,7 @@ class ListActivity : Activity() {
         configRecyclerView()
         onClickFab()
         setContentView(binding.root)
+
     }
 
     override fun onResume() {
@@ -54,6 +56,15 @@ class ListActivity : Activity() {
         fab.setOnClickListener {
             goFormProducts()
         }
+    }
+
+    override fun clickProduct(product: Products) {
+
+        val intent = Intent(this, DetailProductActivity::class.java).apply {
+            putExtra("KEY",product)
+        }
+
+        startActivity(intent)
     }
 
 

@@ -1,23 +1,35 @@
 package com.example.ecommercekotlin.view.recyclerview.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ecommercekotlin.DetailProductActivity
 import com.example.ecommercekotlin.R
 import com.example.ecommercekotlin.databinding.ItemProductBinding
 import com.example.ecommercekotlin.modal.Products
+import com.example.ecommercekotlin.view.activity.ListActivity
+import okhttp3.internal.notify
 
 
-class ListProductAdapter(val context: Context, products: List<Products>) :
+class ListProductAdapter(
+    val context: Context,
+    products: List<Products>,
+    var clickProduct: ClickProduct
+) :
     RecyclerView.Adapter<ViewHolderItemProduct>() {
+
+    private lateinit var binding: ItemProductBinding
 
     //lista atualizada
     private val dateSet = products.toMutableList()
 
     //ele vai ser o responsaval para criar cada uma das vieows para fazer o processo de bind
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderItemProduct {
-        val binding = ItemProductBinding.inflate(LayoutInflater.from(context),parent,false)
+        binding = ItemProductBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolderItemProduct(binding)
     }
 
@@ -26,6 +38,9 @@ class ListProductAdapter(val context: Context, products: List<Products>) :
     override fun onBindViewHolder(holder: ViewHolderItemProduct, position: Int) {
         val product = dateSet[position]
 
+        holder.binding.layoutmain.setOnClickListener {
+            clickProduct.clickProduct(product)
+        }
         holder.bind(product)
     }
 
@@ -41,5 +56,8 @@ class ListProductAdapter(val context: Context, products: List<Products>) :
         notifyDataSetChanged()
     }
 
+    interface ClickProduct {
+        fun clickProduct(position: Products)
+    }
 
 }
