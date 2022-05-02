@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/main_menu"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="all"
+        app:showAsAction="always">
+        <menu>
+
+            <item
+                android:id="@+id/menu_name_desc"
+                android:title="nome desc"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/menu_name_asc"
+                android:title="nome asc"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_description_desc"
+                android:title="descrição desc"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_description_asc"
+                android:title="descrição asc"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_price_desc"
+                android:title="valor desc"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_price_asc"
+                android:title="valor ascc"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/menu_never_order"
+                android:title="sem ordenação"
+                app:showAsAction="never" />
+
+
+        </menu>
+    </item>
+
+
+</menu>

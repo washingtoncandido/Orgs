@@ -5,9 +5,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ecommercekotlin.DetailProductActivity
+import com.example.ecommercekotlin.view.activity.DetailProductActivity
 import com.example.ecommercekotlin.R
 import com.example.ecommercekotlin.databinding.ItemProductBinding
 import com.example.ecommercekotlin.modal.Products
@@ -17,8 +18,8 @@ import okhttp3.internal.notify
 
 class ListProductAdapter(
     val context: Context,
-    products: List<Products>,
-    var clickProduct: ClickProduct
+    products: List<Products> = emptyList(),
+    val clickProduct: onItemClick
 ) :
     RecyclerView.Adapter<ViewHolderItemProduct>() {
 
@@ -37,7 +38,6 @@ class ListProductAdapter(
     // vai informa qual o item que está naquele momento,você consegue modifica cada item de acordo com a position
     override fun onBindViewHolder(holder: ViewHolderItemProduct, position: Int) {
         val product = dateSet[position]
-
         holder.binding.layoutmain.setOnClickListener {
             clickProduct.clickProduct(product)
         }
@@ -56,8 +56,11 @@ class ListProductAdapter(
         notifyDataSetChanged()
     }
 
-    interface ClickProduct {
-        fun clickProduct(position: Products)
+
+
+    interface onItemClick {
+        fun clickProduct(product: Products)
     }
+
 
 }

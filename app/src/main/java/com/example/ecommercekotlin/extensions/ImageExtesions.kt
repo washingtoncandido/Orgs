@@ -7,9 +7,9 @@ import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.*
 
-fun ImageView.loaderImages(url: String? = null) {
+fun ImageView.loaderImages(url: String? = null,fallback: Int = R.drawable.imagem_padrao) {
     load(url) {
-        fallback(com.example.ecommercekotlin.R.drawable.imagem_padrao)
+        fallback(fallback)
         error(com.example.ecommercekotlin.R.drawable.erro)
         placeholder(com.example.ecommercekotlin.R.drawable.placeholder)
 

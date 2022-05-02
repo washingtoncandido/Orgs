@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EcommerceKotlin">
         <activity
-            android:name=".DetailProductActivity"
+            android:name=".view.activity.DetailProductActivity"
             android:exported="false" />
         <activity android:name=".view.activity.FormProductActivity" />
         <activity
