@@ -15,8 +15,7 @@
 
 ## Funcionalidade em Desenvolvimento
 
-+ Detalhes do produto
-+ Cadastro de imagem para o Produto
++ Implementando Room 
 
 
 ## Assuntos abordados:
